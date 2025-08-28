@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Deny direct access to sensitive directories
+RewriteRule ^app - [F,L]
+RewriteRule ^config - [F,L]
+RewriteRule ^database - [F,L]
+RewriteRule ^logs - [F,L]
+
+# Redirect all traffic to public directory
+RewriteCond %{REQUEST_URI} !^/iasd-marques/public/
+RewriteRule ^(.*)$ public/$1 [L]
+
